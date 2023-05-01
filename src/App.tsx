@@ -1,9 +1,10 @@
-import './App.scss';
+import "./App.css";
+import Game from "./pages/Game";
 
 function App() {
   return (
-    <div>
-
+    <div className="void-app">
+      <Game />
     </div>
   );
 }
