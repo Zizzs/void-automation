@@ -1,15 +1,20 @@
 import Dropdown from "../../components/Dropdown";
 import { useEffect, useState } from "react";
-import { useGamePulse } from "../../hooks/useGamePulse";
 import "./styles.scss";
 
 const Game = () => {
   const [dropDownOpen, setDropDownOpen] = useState(false);
+  const [gameSpeed, setGameSpeed] = useState(1000);
+  const [pulse, setPulse] = useState(0);
   const [pause, setPause] = useState(false);
 
-  const currentPulse = useGamePulse({ pause });
+  useEffect(() => {
+    const gameLoop = setInterval(() => {
+      setPulse(pulse + 1);
+    }, gameSpeed);
 
-  console.log(currentPulse);
+    return () => clearInterval(gameLoop);
+  });
 
   const handleDropDown = () => {
     setDropDownOpen(!dropDownOpen);
