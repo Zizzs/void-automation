@@ -1,5 +1,9 @@
 import Dropdown from "../../components/Dropdown";
 import { useEffect, useState } from "react";
+
+import { useAppDispatch } from "../../hooks/redux";
+import { store } from "../../redux/store";
+
 import "./styles.scss";
 
 const Game = () => {
@@ -8,9 +12,19 @@ const Game = () => {
   const [pulse, setPulse] = useState(0);
   const [pause, setPause] = useState(false);
 
+  const dispatch = useAppDispatch();
+  const playerState = store.getState();
+
   useEffect(() => {
     const gameLoop = setInterval(() => {
-      setPulse(pulse + 1);
+      // Game Logic -----------
+
+      dispatch({ type: "player/incByAmount", payload: 5 });
+
+      // Retrieve Player's Current Resource Income
+      // Calculate New Resource Totals
+
+      console.log(playerState.one);
     }, gameSpeed);
 
     return () => clearInterval(gameLoop);
