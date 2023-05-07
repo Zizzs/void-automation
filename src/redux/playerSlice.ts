@@ -6,13 +6,13 @@ const playerSlice = createSlice({
   initialState: initialState,
   reducers: {
     incOne(state, action) {
-      state.one = state.one + 1;
+      state.resources.one = state.resources.one + 1;
     },
     decOne(state, action) {
-      state.one = state.one - 1;
+      state.resources.one = state.resources.one - 1;
     },
     incByAmount: (state, action: PayloadAction<number>) => {
-      state.one += action.payload;
+      state.resources.one += action.payload;
     },
   },
 });

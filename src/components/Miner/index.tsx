@@ -1,8 +1,4 @@
-type MinerProps = {
-  name: string;
-  tier: string;
-  rate: number;
-};
+import { Miner as MinerProps } from "../../redux/types";
 
 const Miner = ({ name, tier, rate }: MinerProps) => {
   return (

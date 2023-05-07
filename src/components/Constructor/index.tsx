@@ -1,9 +1,4 @@
-type ConstructorProps = {
-  name: string;
-  tier: string;
-  rate: number;
-  maxInput: number;
-};
+import { Constructor as ConstructorProps } from "../../redux/types";
 
 const Constructor = ({ name, tier, rate, maxInput }: ConstructorProps) => {
   return (
