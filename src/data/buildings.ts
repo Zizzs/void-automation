@@ -1,4 +1,4 @@
-const buildings = {
+export const buildings = {
   miner: {
     one: {
       name: "Miner",

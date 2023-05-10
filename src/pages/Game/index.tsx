@@ -19,16 +19,14 @@ const Game = () => {
     const gameLoop = setInterval(() => {
       // Game Logic -----------
 
-      dispatch({ type: "player/incByAmount", payload: 5 });
-
-      // Retrieve Player's Current Resource Income
       // Calculate New Resource Totals
-
-      console.log(playerState.one);
+      dispatch({ type: "player/updateResources", payload: playerState });
     }, gameSpeed);
 
     return () => clearInterval(gameLoop);
   });
+
+  console.log(playerState.resources.one);
 
   const handleDropDown = () => {
     setDropDownOpen(!dropDownOpen);
