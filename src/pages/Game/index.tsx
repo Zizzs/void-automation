@@ -7,7 +7,6 @@ import { store } from "../../redux/store";
 import "./styles.scss";
 
 const Game = () => {
-  const [validPlayer, setValidPlayer] = useState(false);
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const [gameSpeed, setGameSpeed] = useState(1000);
   const [pulse, setPulse] = useState(0);
@@ -27,7 +26,7 @@ const Game = () => {
     return () => clearInterval(gameLoop);
   });
 
-  console.log(playerState.resources.one);
+  console.log(playerState);
 
   const handleDropDown = () => {
     setDropDownOpen(!dropDownOpen);

@@ -7,6 +7,11 @@ const playerSlice = createSlice({
   name: "player",
   initialState: initialState,
   reducers: {
+    createPlayer: (state, action: PayloadAction<initialStateType>) => {
+      state = action.payload;
+
+      return state;
+    },
     updateResources: (state, action: PayloadAction<initialStateType>) => {
       state = updateResourcesFunc(action.payload);
 
@@ -15,5 +20,5 @@ const playerSlice = createSlice({
   },
 });
 
-export const { updateResources } = playerSlice.actions;
+export const { updateResources, createPlayer } = playerSlice.actions;
 export default playerSlice.reducer;
