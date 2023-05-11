@@ -1,6 +1,7 @@
 import { initialStateType } from "./types";
 
 const initialState: initialStateType = {
+  name: "Default",
   resources: {
     one: 0,
     two: 0,
@@ -18,9 +19,7 @@ const initialState: initialStateType = {
     drones: [],
     ships: [],
   },
-  stars: {
-    // Star Data TBD
-  },
+  stars: [],
 };
 
 export default initialState;

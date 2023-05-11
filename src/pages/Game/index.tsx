@@ -7,6 +7,7 @@ import { store } from "../../redux/store";
 import "./styles.scss";
 
 const Game = () => {
+  const [validPlayer, setValidPlayer] = useState(false);
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const [gameSpeed, setGameSpeed] = useState(1000);
   const [pulse, setPulse] = useState(0);

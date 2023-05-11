@@ -1,4 +1,5 @@
 export type initialStateType = {
+  name: string;
   resources: {
     one: number;
     two: number;
@@ -16,7 +17,7 @@ export type initialStateType = {
     drones: Drone[];
     ships: Ship[];
   };
-  stars: {};
+  stars: Star[];
 };
 
 export type Miner = {
@@ -42,4 +43,19 @@ export type Ship = {
   name: string;
   tier: string;
   rate: number;
+};
+
+export type Star = {
+  name: string;
+  type: string;
+  totalLight: number;
+  planets: Planet[];
+};
+
+export type Planet = {
+  name: string;
+  resourceOne: number;
+  resourceTwo: number;
+  resourceThree: number;
+  miners: Miner[];
 };
