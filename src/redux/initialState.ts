@@ -12,12 +12,14 @@ const initialState: initialStateType = {
     three: 1,
   },
   buildings: {
-    miners: [],
     constructors: [],
   },
   logistics: {
     drones: [],
     ships: [],
+  },
+  stars: {
+    // Star Data TBD
   },
 };
 

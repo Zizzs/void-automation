@@ -10,13 +10,13 @@ export type initialStateType = {
     three: number;
   };
   buildings: {
-    miners: Miner[];
     constructors: Constructor[];
   };
   logistics: {
     drones: Drone[];
     ships: Ship[];
   };
+  stars: {};
 };
 
 export type Miner = {
