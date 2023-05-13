@@ -35,7 +35,7 @@ export const CreatePlayer = ({ setValidPlayer }: CreatePlayerProps) => {
 
   return (
     <div>
-      <div>
+      <div className="pt-10 md:pt-20">
         <p className="text-white">CreatePlayer</p>
         <Input onChange={handlePlayerName} value={playerName} />
         <button onClick={handlePlayerState}>Submit</button>
