@@ -1,12 +1,14 @@
+import classNames from "classnames";
 import React, { ChangeEvent } from "react";
 
 type InputProps = {
   label?: string;
   value: string;
+  className?: string;
   onChange?: (value: string) => void;
 };
 
-const Input = ({ label = "", value, onChange }: InputProps) => {
+const Input = ({ className = "", label = "", value, onChange }: InputProps) => {
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
     if (onChange) {
@@ -15,7 +17,7 @@ const Input = ({ label = "", value, onChange }: InputProps) => {
   };
 
   return (
-    <div>
+    <div className={classNames(className, "")}>
       <label>{label}</label>
       <input type="text" value={value} onChange={handleInputChange} />
     </div>

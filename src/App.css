@@ -67,3 +67,7 @@ body {
 .void-white {
 	color: white;
 }
+
+html, body, #root {
+	height: 100%;
+}

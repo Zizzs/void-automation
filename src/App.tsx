@@ -4,11 +4,11 @@ import { Provider, connect } from "react-redux";
 import { store } from "./redux/store";
 import mapStateToProps from "./redux/mapStateToProps";
 import { useState } from "react";
-import { CreatePlayer } from "./pages/CreatePlayer";
+import { Home } from "./pages/Home";
 import { Container } from "./components/Container";
 
 const GameContainer = connect(mapStateToProps)(Game);
-const CreatePlayerContainer = connect(mapStateToProps)(Game);
+const HomeContainer = connect(mapStateToProps)(Home);
 
 const App = () => {
   const [validPlayer, setValidPlayer] = useState(false);
@@ -19,11 +19,11 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <Container className="void-app">
+      <Container className="void-app h-full">
         {validPlayer ? (
           <GameContainer />
         ) : (
-          <CreatePlayer setValidPlayer={handleSetValidPlayer} />
+          <HomeContainer setValidPlayer={handleSetValidPlayer} />
         )}
       </Container>
     </Provider>
