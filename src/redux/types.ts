@@ -18,7 +18,9 @@ export type initialStateType = {
 export type Miner = {
   name: string;
   tier: string;
-  rate: number;
+  metalRate: number;
+  diamondRate: number;
+  stoneRate: number;
 };
 
 export type Constructor = {
@@ -52,5 +54,5 @@ export type Planet = {
   metal: number;
   diamond: number;
   stone: number;
-  miners: Miner[];
+  miner: Miner;
 };

@@ -1,9 +1,18 @@
 export const buildings = {
   miner: {
+    default: {
+      name: "Default",
+      tier: "Zero",
+      metalRate: 0,
+      diamondRate: 0,
+      stoneRate: 0,
+    },
     one: {
-      name: "Miner",
+      name: "Planetary Miner",
       tier: "One",
-      rate: 15,
+      metalRate: 15,
+      diamondRate: 15,
+      stoneRate: 15,
     },
   },
   constructors: {

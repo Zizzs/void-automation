@@ -41,10 +41,10 @@ const generatePlanets = (starType: string, starIndex: number) => {
     let metal: number = 10000; // TODO: Create Resources Generation Script
     let diamond: number = 10000;
     let stone: number = 10000;
-    let planetMiners: Miner[] = [];
+    let planetMiner: Miner = buildings.miner.default;
 
     if (i === 0 && starIndex === 0) {
-      planetMiners.push(buildings.miner.one);
+      planetMiner = buildings.miner.one;
     }
 
     const newPlanet = {
@@ -52,7 +52,7 @@ const generatePlanets = (starType: string, starIndex: number) => {
       metal: metal,
       diamond: diamond,
       stone: stone,
-      miners: planetMiners,
+      miner: planetMiner,
     };
 
     newPlanets.push(newPlanet);

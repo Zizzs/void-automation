@@ -9,17 +9,16 @@ export const updatePlayerState = (state: initialStateType) => {
     for (let j = 0; j < currentStar?.planets.length; j++) {
       let currentPlanet = currentStar?.planets[j];
 
-      for (let miner of currentPlanet.miners) {
-        // Add resource income for the tick
-        newPlayerState.resources.metal += miner.rate;
-        newPlayerState.resources.diamond += miner.rate;
-        newPlayerState.resources.stone += miner.rate;
+      // Add resource income for the tick
+      newPlayerState.resources.metal += currentPlanet.miner.metalRate;
+      newPlayerState.resources.diamond += currentPlanet.miner.diamondRate;
+      newPlayerState.resources.stone += currentPlanet.miner.stoneRate;
 
-        // Calculate planet resource total from miner consumption
-        newPlayerState.stars[i].planets[j].metal -= miner.rate;
-        newPlayerState.stars[i].planets[j].diamond -= miner.rate;
-        newPlayerState.stars[i].planets[j].stone -= miner.rate;
-      }
+      // Calculate planet resource total from miner consumption
+      newPlayerState.stars[i].planets[j].metal -= currentPlanet.miner.metalRate;
+      newPlayerState.stars[i].planets[j].diamond -=
+        currentPlanet.miner.diamondRate;
+      newPlayerState.stars[i].planets[j].stone -= currentPlanet.miner.stoneRate;
     }
   }
 
