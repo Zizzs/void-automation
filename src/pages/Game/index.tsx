@@ -5,12 +5,11 @@ import { useAppDispatch } from "../../hooks/redux";
 import { store } from "../../redux/store";
 
 import "./styles.scss";
+import { VoidHub } from "../VoidHub";
+import { ResourceHeader } from "../../components/ResourceHeader";
 
 const Game = () => {
-  const [dropDownOpen, setDropDownOpen] = useState(false);
   const [gameSpeed, setGameSpeed] = useState(1000);
-  const [pulse, setPulse] = useState(0);
-  const [pause, setPause] = useState(false);
 
   const dispatch = useAppDispatch();
   const playerState = store.getState();
@@ -18,9 +17,14 @@ const Game = () => {
   useEffect(() => {
     const gameLoop = setInterval(() => {
       // Game Logic -----------
-
       // Calculate New Resource Totals
-      dispatch({ type: "player/updateResources", payload: playerState });
+      // dispatch({ type: "player/updateResources", payload: playerState }); -- Old update dispatch
+      //
+      // Calculate resource income from miners
+      // Calculate new resource totals
+      // Calculate resource cost for constructors
+      // Calculate resulting raw and processed resource totals
+      // Set player state with new resources
     }, gameSpeed);
 
     return () => clearInterval(gameLoop);
@@ -28,23 +32,10 @@ const Game = () => {
 
   console.log(playerState);
 
-  const handleDropDown = () => {
-    setDropDownOpen(!dropDownOpen);
-  };
-
   return (
     <div className="void-game-wrapper">
-      <div className="w-[10rem]">
-        <Dropdown
-          onClick={handleDropDown}
-          isOpen={dropDownOpen}
-          header="Dropdown"
-        >
-          <p style={{ color: "white" }}>test1</p>
-          <p style={{ color: "white" }}>test2</p>
-          <p style={{ color: "white" }}>test3</p>
-        </Dropdown>
-      </div>
+      <ResourceHeader resources={playerState.resources} />
+      <VoidHub />
     </div>
   );
 };

@@ -11,7 +11,7 @@ export const Container = ({ className = "", children }: ContainerProps) => {
     <div
       className={classNames(
         className,
-        "max-w-sm md:max-w-3xl lg:max-w-7xl mx-auto"
+        "max-w-sm md:max-w-3xl lg:max-w-7xl xl:max-w-[110rem] mx-auto"
       )}
     >
       {children}
