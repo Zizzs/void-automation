@@ -1,14 +1,9 @@
 export type initialStateType = {
   name: string;
   resources: {
-    one: number;
-    two: number;
-    three: number;
-  };
-  resourcesIncome: {
-    one: number;
-    two: number;
-    three: number;
+    metal: number;
+    diamond: number;
+    stone: number;
   };
   buildings: {
     constructors: Constructor[];
@@ -54,8 +49,8 @@ export type Star = {
 
 export type Planet = {
   name: string;
-  resourceOne: number;
-  resourceTwo: number;
-  resourceThree: number;
+  metal: number;
+  diamond: number;
+  stone: number;
   miners: Miner[];
 };

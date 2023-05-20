@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import initialState from "./initialState";
 import { initialStateType } from "./types";
-import { updateResources as updateResourcesFunc } from "./logic/updateResources";
+import { updatePlayerState as updatePlayerStateFunc } from "./logic/updatePlayerState";
 
 const playerSlice = createSlice({
   name: "player",
@@ -12,13 +12,13 @@ const playerSlice = createSlice({
 
       return state;
     },
-    updateResources: (state, action: PayloadAction<initialStateType>) => {
-      state = updateResourcesFunc(action.payload);
+    updatePlayerState: (state, action: PayloadAction<initialStateType>) => {
+      state = updatePlayerStateFunc(action.payload);
 
       return state;
     },
   },
 });
 
-export const { updateResources, createPlayer } = playerSlice.actions;
+export const { updatePlayerState, createPlayer } = playerSlice.actions;
 export default playerSlice.reducer;

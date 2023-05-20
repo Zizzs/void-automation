@@ -16,21 +16,12 @@ const Game = () => {
 
   useEffect(() => {
     const gameLoop = setInterval(() => {
-      // Game Logic -----------
-      // Calculate New Resource Totals
-      // dispatch({ type: "player/updateResources", payload: playerState }); -- Old update dispatch
-      //
-      // Calculate resource income from miners
-      // Calculate new resource totals
-      // Calculate resource cost for constructors
-      // Calculate resulting raw and processed resource totals
-      // Set player state with new resources
+      // Run the Update Player State dispatch function
+      dispatch({ type: "player/updatePlayerState", payload: playerState });
     }, gameSpeed);
 
     return () => clearInterval(gameLoop);
-  });
-
-  console.log(playerState);
+  }, [playerState]);
 
   return (
     <div className="void-game-wrapper">

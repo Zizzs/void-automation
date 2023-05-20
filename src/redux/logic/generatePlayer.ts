@@ -1,4 +1,5 @@
 import { initialStateType, Star, Planet, Miner } from "../types";
+import { buildings } from "../../data/buildings";
 
 export const generatePlayer = (state: initialStateType) => {
   const stars = generateStars();
@@ -15,7 +16,8 @@ const generateStars = () => {
     let starName: string = `Star${i}`; // TODO: Create Star Name Generation Script
     let starType: string = "K"; // TODO: Create Star Type Generation Script
     let starLight: number = 1000; // TODO: Create Star Light Generation Script
-    let starPlanets: Planet[] = generatePlanets(starType);
+    let starIndex = i;
+    let starPlanets: Planet[] = generatePlanets(starType, starIndex);
 
     let star = {
       name: starName,
@@ -30,22 +32,26 @@ const generateStars = () => {
   return newStars;
 };
 
-const generatePlanets = (type: string) => {
+const generatePlanets = (starType: string, starIndex: number) => {
   let totalPlanets = 3; // TODO: Create Total Planets Generation Script
   let newPlanets: Planet[] = [];
 
   for (let i = 0; i < totalPlanets; i++) {
     let planetName: string = `Planet${i}`; // TODO: Create Planet Name Generation Script
-    let resourceOne: number = 10000; // TODO: Create Resources Generation Script
-    let resourceTwo: number = 10000;
-    let resourceThree: number = 10000;
+    let metal: number = 10000; // TODO: Create Resources Generation Script
+    let diamond: number = 10000;
+    let stone: number = 10000;
     let planetMiners: Miner[] = [];
+
+    if (i === 0 && starIndex === 0) {
+      planetMiners.push(buildings.miner.one);
+    }
 
     const newPlanet = {
       name: planetName,
-      resourceOne: resourceOne,
-      resourceTwo: resourceTwo,
-      resourceThree: resourceThree,
+      metal: metal,
+      diamond: diamond,
+      stone: stone,
       miners: planetMiners,
     };
 

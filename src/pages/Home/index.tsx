@@ -30,8 +30,6 @@ export const Home = ({ setValidPlayer }: CreatePlayerProps) => {
     // Validate the player and check for proper date typings
     const isPlayerValid = true;
     setValidPlayer(isPlayerValid);
-
-    console.log(isPlayerValid);
   };
 
   return (

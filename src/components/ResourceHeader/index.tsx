@@ -1,15 +1,20 @@
+import React from "react";
+
 type ResourceHeaderProps = {
-  resources: {
-    one: number;
-    two: number;
-    three: number;
-  };
+  resources: Record<string, number>;
 };
 
-export const ResourceHeader = (resources: ResourceHeaderProps) => {
+export const ResourceHeader = ({ resources }: ResourceHeaderProps) => {
   return (
-    <div>
-      <div className="text-white">Resources</div>
+    <div className="flex justify-center space-x-20 w-full">
+      {Object.keys(resources).map((key: string, index: number) => {
+        return (
+          <div key={`resource-${index}-${key}`}>
+            <p className="text-white">{key}</p>
+            <p className="text-white">{resources[key]}</p>
+          </div>
+        );
+      })}
     </div>
   );
 };
