@@ -5,8 +5,8 @@ import { useAppDispatch } from "../../hooks/redux";
 import { store } from "../../redux/store";
 
 import "./styles.scss";
-import { VoidHub } from "../VoidHub";
 import { ResourceHeader } from "../../components/ResourceHeader";
+import { TabContainer } from "../../components/TabContainer";
 
 const Game = () => {
   const [gameSpeed, setGameSpeed] = useState(1000);
@@ -36,7 +36,7 @@ const Game = () => {
         resources={playerState.resources}
         prevResources={prevResources.current}
       />
-      <VoidHub />
+      <TabContainer />
     </div>
   );
 };
