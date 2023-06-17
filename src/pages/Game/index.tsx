@@ -18,7 +18,13 @@ const Game = () => {
     const gameLoop = setInterval(() => {
       // Run the Update Player State dispatch function
       dispatch({ type: "player/updatePlayerState", payload: playerState });
+
+      // Set the previous tick's resources to a new variable for comparison
       prevResources.current = playerState.resources;
+
+      // Stringify the player state to be set to value in local storage.
+      let localStorageState = JSON.stringify(playerState);
+      localStorage.setItem("PlayerData", localStorageState);
     }, gameSpeed);
 
     return () => clearInterval(gameLoop);

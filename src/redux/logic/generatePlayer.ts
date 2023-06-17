@@ -38,9 +38,6 @@ const generatePlanets = (starType: string, starIndex: number) => {
 
   for (let i = 0; i < totalPlanets; i++) {
     let planetName: string = `Planet${i}`; // TODO: Create Planet Name Generation Script
-    let metal: number = 10000; // TODO: Create Resources Generation Script
-    let diamond: number = 10000;
-    let stone: number = 10000;
     let planetMiner: Miner = buildings.miner.default;
 
     if (i === 0 && starIndex === 0) {
@@ -49,9 +46,6 @@ const generatePlanets = (starType: string, starIndex: number) => {
 
     const newPlanet = {
       name: planetName,
-      metal: metal,
-      diamond: diamond,
-      stone: stone,
       miner: planetMiner,
     };
 

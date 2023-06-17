@@ -1,9 +1,10 @@
 import Input from "../../components/Input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { store } from "../../redux/store";
 import { generatePlayer } from "../../redux/logic/generatePlayer";
 import { useAppDispatch } from "../../hooks/redux";
 import { NewsTicker } from "../../components/NewsTicker";
+import { initialStateType } from "../../redux/types";
 
 type CreatePlayerProps = {
   setValidPlayer: (isPlayerValid: boolean) => void;
@@ -12,13 +13,27 @@ type CreatePlayerProps = {
 export const Home = ({ setValidPlayer }: CreatePlayerProps) => {
   // TODO: Import/Export User Data instead of creating player
   const [playerName, setPlayerName] = useState("");
+
+  // Valid Player State bool used to determine if the parsed local storage is of a valid player state type
+  const [validPlayerState, setValidPlayerState] = useState(false);
+
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const localPlayerData = JSON.parse(
+      localStorage.getItem("PlayerData") || ""
+    );
+
+    const isValid = checkObject(localPlayerData);
+
+    setValidPlayerState(isValid);
+  });
 
   const handlePlayerName = (name: string) => {
     setPlayerName(name);
   };
 
-  const handlePlayerState = () => {
+  const handleGeneratePlayerState = () => {
     let playerState = JSON.parse(JSON.stringify(store.getState()));
 
     playerState.name = playerName;
@@ -28,9 +43,46 @@ export const Home = ({ setValidPlayer }: CreatePlayerProps) => {
     dispatch({ type: "player/createPlayer", payload: playerState });
 
     // Validate the player and check for proper date typings
-    const isPlayerValid = true;
+    const isPlayerValid = checkObject(playerState);
     setValidPlayer(isPlayerValid);
   };
+
+  const handleLoadPlayerState = () => {
+    const localPlayerData = JSON.parse(
+      localStorage.getItem("PlayerData") || ""
+    );
+
+    let playerState = localPlayerData;
+
+    dispatch({ type: "player/createPlayer", payload: playerState });
+
+    // Validate the player and check for proper date typings
+    const isPlayerValid = checkObject(playerState);
+    setValidPlayer(isPlayerValid);
+  };
+
+  // Function to validate the player object
+  function checkObject(obj: any): obj is initialStateType {
+    const expectedKeys: Array<keyof initialStateType> = [
+      "name",
+      "resources",
+      "buildings",
+      "logistics",
+      "stars",
+    ];
+
+    if (typeof obj !== "object" || obj === null) {
+      return false;
+    }
+
+    for (const key of expectedKeys) {
+      if (!(key in obj)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 
   return (
     <div className="w-full h-full">
@@ -42,19 +94,28 @@ export const Home = ({ setValidPlayer }: CreatePlayerProps) => {
           <p>News</p>
           <NewsTicker />
         </div>
-
-        <div className="flex-1 ">
-          <p className="text-white text-3xl mb-5">CreatePlayer</p>
-          <Input
-            className="mb-5"
-            onChange={handlePlayerName}
-            value={playerName}
-          />
-          <button className="bg-white mb-5" onClick={handlePlayerState}>
-            Submit
-          </button>
-          <p className="text-white text-3xl mb-5">Or Upload Character Data</p>
-        </div>
+        {validPlayerState ? (
+          <div className="flex-1">
+            <button className="bg-white mb-5" onClick={handleLoadPlayerState}>
+              Load Player Data
+            </button>
+          </div>
+        ) : (
+          <div className="flex-1 ">
+            <p className="text-white text-3xl mb-5">CreatePlayer</p>
+            <Input
+              className="mb-5"
+              onChange={handlePlayerName}
+              value={playerName}
+            />
+            <button
+              className="bg-white mb-5"
+              onClick={handleGeneratePlayerState}
+            >
+              Submit
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -51,8 +51,5 @@ export type Star = {
 
 export type Planet = {
   name: string;
-  metal: number;
-  diamond: number;
-  stone: number;
   miner: Miner;
 };
